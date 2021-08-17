@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet( name = "AuthenticationServlet", urlPatterns = { "/login" } )
 public class AuthenticationServlet extends HttpServlet
@@ -31,6 +32,10 @@ public class AuthenticationServlet extends HttpServlet
         if ( login.equals( "michel" ) && password.equals( "123456" )
                 || login.equals( "caroline" ) && password.equals( "abcdef" ) )
         {
+
+            HttpSession session = request.getSession();
+            session.setAttribute( "login", login );
+
             out.print( "Vous êtes bien identifié<br><br>" );
         }
         else
