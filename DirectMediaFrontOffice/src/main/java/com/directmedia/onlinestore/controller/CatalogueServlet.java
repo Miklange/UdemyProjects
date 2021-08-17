@@ -35,18 +35,21 @@ public class CatalogueServlet extends HttpServlet
         Artist artistC = new Artist( "Maitre Gims" );
 
         Work oeuvreA = new Work( "Thriller" );
+        oeuvreA.setId( 1 );
         oeuvreA.setMainArtist( artistA );
         oeuvreA.setGenre( "Pop" );
         oeuvreA.setSummary( "C'est de la bombe" );
         oeuvreA.setRelease( 1980 );
 
         Work oeuvreB = new Work( "Traces" );
+        oeuvreB.setId( 2 );
         oeuvreB.setMainArtist( artistB );
         oeuvreB.setGenre( "Pop Rock" );
         oeuvreB.setSummary( "Les enfoirés" );
         oeuvreB.setRelease( 1989 );
 
         Work oeuvreC = new Work( "Subliminal" );
+        oeuvreC.setId( 3 );
         oeuvreC.setMainArtist( artistC );
         oeuvreC.setGenre( "Rap" );
         oeuvreC.setSummary( "Wesh !" );
@@ -61,7 +64,7 @@ public class CatalogueServlet extends HttpServlet
         // Afficher la liste
         for ( Work work : Catalogue.listOfWork )
         {
-            out.print( "<li>" + work.toString() + "</li>" );
+            out.print( "<li><a href=/DirectMediaFrontOffice/work-details?id=" + work.getId() + ">" + work.toString() + "</a></li>" );
         }
 
         out.print( "</ul></BODY></HTML>" );

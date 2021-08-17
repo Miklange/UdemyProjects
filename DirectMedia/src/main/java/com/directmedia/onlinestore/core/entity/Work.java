@@ -2,6 +2,8 @@ package com.directmedia.onlinestore.core.entity;
 
 public class Work
 {
+    private long   id;
+
     private String title;
 
     private String genre;
@@ -19,6 +21,16 @@ public class Work
     public Work( String title )
     {
         this.title = title;
+    }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    public void setId( long id )
+    {
+        this.id = id;
     }
 
     public String getTitle()
