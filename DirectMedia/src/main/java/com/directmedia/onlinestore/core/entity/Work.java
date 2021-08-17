@@ -74,7 +74,7 @@ public class Work
     @Override
     public String toString()
     {
-        return "Work [title=" + title + ", release=" + release + "]";
+        return title + " (" + release + ")";
     }
 
 }

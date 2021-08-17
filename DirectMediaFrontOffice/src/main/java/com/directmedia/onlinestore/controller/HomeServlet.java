@@ -22,6 +22,6 @@ public class HomeServlet extends HttpServlet
     protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
         PrintWriter out = response.getWriter();
-        out.print( "<HTML><BODY> Bonjour de la Servlet Front</BODY></HTML>" );
+        out.print( "<HTML><BODY> <a href=/DirectMediaFrontOffice/catalogue>Accès au catalogue des oeuvres </a></BODY></HTML>" );
     }
 }

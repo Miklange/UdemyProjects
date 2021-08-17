@@ -3,6 +3,7 @@
 	<name>DirectMediaFrontOffice</name>
 	<comment></comment>
 	<projects>
+		<project>DirectMedia</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

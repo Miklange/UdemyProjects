@@ -41,6 +41,13 @@
 			<scope>provided</scope>
 		</dependency>
 		
+		<dependency>
+			<groupId>com.directmedia.onlinestore</groupId>
+			<artifactId>DirectMediaCore</artifactId>
+			<version>1.0</version>
+			<type>jar</type>
+		</dependency>
+		
 	</dependencies>
 
 	<!-- =============================================================== -->
