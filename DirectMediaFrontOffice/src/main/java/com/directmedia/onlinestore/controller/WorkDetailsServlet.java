@@ -48,6 +48,11 @@ public class WorkDetailsServlet extends HttpServlet
                 out.print( "<b>Date : </b>" + currentWork.getRelease() + "<br>" );
                 out.print( "<b>Genre : </b>" + currentWork.getGenre() + "<br>" );
                 out.print( "<b>Description : </b>" + currentWork.getSummary() + "<br>" );
+
+                out.print( "<form action=\"addToCart\" method=\"POST\">" );
+                out.print( "<input type=\"hidden\" name=\"idWork\" value=\"" + currentWork.getId() + "\">" );
+                out.print( "<input type=\"submit\" value=\"Ajouter au caddy\">" );
+                out.print( "</form>" );
             }
             else
             {
