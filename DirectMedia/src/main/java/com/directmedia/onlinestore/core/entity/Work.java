@@ -2,24 +2,28 @@ package com.directmedia.onlinestore.core.entity;
 
 public class Work
 {
-    private long   id;
+    private static int lastId = 0;
 
-    private String title;
+    private long       id;
 
-    private String genre;
+    private String     title;
 
-    private int    release;
+    private String     genre;
 
-    private String summary;
+    private int        release;
 
-    private Artist mainArtist;
+    private String     summary;
+
+    private Artist     mainArtist;
 
     public Work()
     {
+        this.id = lastId++;
     }
 
     public Work( String title )
     {
+        this();
         this.title = title;
     }
 

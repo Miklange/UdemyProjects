@@ -22,6 +22,9 @@ public class HomeServlet extends HttpServlet
     protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
         PrintWriter out = response.getWriter();
-        out.print( "<HTML><BODY>  Online Store - Gestion de la boutique <br><br> <a href=/DirectMediaBackOffice/catalogue>Accès au catalogue des oeuvres </a> </BODY></HTML>" );
+        out.print( "<HTML><BODY>  Online Store - Gestion de la boutique <br>"
+                + "<br> <a href=/DirectMediaBackOffice/catalogue>Accès au catalogue des oeuvres </a>"
+                + "<br> <a href=/DirectMediaBackOffice/add-work-form.html>Ajouter une oeuvre </a>"
+                + " </BODY></HTML>" );
     }
 }

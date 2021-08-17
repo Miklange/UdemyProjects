@@ -27,37 +27,36 @@ public class CatalogueServlet extends HttpServlet
     {
         PrintWriter out = response.getWriter();
 
-        // Clean the list to not add values at each page refresh
-        Catalogue.listOfWork.clear();
+        // Add only if empty at beginning
+        if ( Catalogue.listOfWork.isEmpty() )
+        {
+            Artist artistA = new Artist( "Michael Jackson" );
+            Artist artistB = new Artist( "J.J. Goldman" );
+            Artist artistC = new Artist( "Maitre Gims" );
 
-        Artist artistA = new Artist( "Michael Jackson" );
-        Artist artistB = new Artist( "J.J. Goldman" );
-        Artist artistC = new Artist( "Maitre Gims" );
+            Work oeuvreA = new Work( "Thriller" );
+            oeuvreA.setMainArtist( artistA );
+            oeuvreA.setGenre( "Pop" );
+            oeuvreA.setSummary( "C'est de la bombe" );
+            oeuvreA.setRelease( 1980 );
 
-        Work oeuvreA = new Work( "Thriller" );
-        oeuvreA.setId( 1 );
-        oeuvreA.setMainArtist( artistA );
-        oeuvreA.setGenre( "Pop" );
-        oeuvreA.setSummary( "C'est de la bombe" );
-        oeuvreA.setRelease( 1980 );
+            Work oeuvreB = new Work( "Traces" );
+            oeuvreB.setMainArtist( artistB );
+            oeuvreB.setGenre( "Pop Rock" );
+            oeuvreB.setSummary( "Les enfoirés" );
+            oeuvreB.setRelease( 1989 );
 
-        Work oeuvreB = new Work( "Traces" );
-        oeuvreB.setId( 2 );
-        oeuvreB.setMainArtist( artistB );
-        oeuvreB.setGenre( "Pop Rock" );
-        oeuvreB.setSummary( "Les enfoirés" );
-        oeuvreB.setRelease( 1989 );
+            Work oeuvreC = new Work( "Subliminal" );
+            oeuvreC.setId( 3 );
+            oeuvreC.setMainArtist( artistC );
+            oeuvreC.setGenre( "Rap" );
+            oeuvreC.setSummary( "Wesh !" );
+            oeuvreC.setRelease( 2013 );
 
-        Work oeuvreC = new Work( "Subliminal" );
-        oeuvreC.setId( 3 );
-        oeuvreC.setMainArtist( artistC );
-        oeuvreC.setGenre( "Rap" );
-        oeuvreC.setSummary( "Wesh !" );
-        oeuvreC.setRelease( 2013 );
-
-        Catalogue.listOfWork.add( oeuvreA );
-        Catalogue.listOfWork.add( oeuvreB );
-        Catalogue.listOfWork.add( oeuvreC );
+            Catalogue.listOfWork.add( oeuvreA );
+            Catalogue.listOfWork.add( oeuvreB );
+            Catalogue.listOfWork.add( oeuvreC );
+        }
 
         out.print( "<HTML><BODY> Liste des oeuvres : <br> <ul>" );
 
