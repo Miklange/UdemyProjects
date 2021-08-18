@@ -1,8 +1,8 @@
 package com.directmedia.onlinestore.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +27,8 @@ public class AddWorkServlet extends HttpServlet
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
 
+        boolean ok = true;
+
         // Get all parameters
         String titre = request.getParameter( "title" );
         String date = request.getParameter( "release" );
@@ -37,23 +39,45 @@ public class AddWorkServlet extends HttpServlet
         // Create object
         Work newWork = new Work( titre );
         newWork.setGenre( genre );
-        newWork.setRelease( Integer.parseInt( date ) );
         newWork.setSummary( description );
         newWork.setMainArtist( new Artist( artist ) );
 
-        // Add in the list
-        Catalogue.listOfWork.add( newWork );
+        // Check value of the date
+        try
+        {
+            newWork.setRelease( Integer.parseInt( date ) );
+        }
+        catch ( NumberFormatException e )
+        {
+            ok = false;
+        }
 
-        response.setContentType( "text/html;charset=UTF-8" );
-        PrintWriter out = response.getWriter();
+        // Check if the Work already exists in the catalogue
+        boolean exist = Catalogue.listOfWork.stream().filter( w -> w.getTitle().equals( newWork.getTitle() )
+                && w.getRelease() == newWork.getRelease()
+                && w.getMainArtist().getName().equals( newWork.getMainArtist().getName() ) )
+                .findAny()
+                .isPresent();
 
-        out.print( "<HTML><BODY>" );
+        RequestDispatcher dispatcher;
 
-        out.print( "L'oeuvre a été ajouté ! <br><br>" );
+        if ( ok && !exist )
+        {
+            // Add in the list
+            Catalogue.listOfWork.add( newWork );
 
-        out.print( "<a href =\"home\">Page d'acceuil</a><br><br>" );
+            // Add id in attributes values to get it in other servlet
+            request.setAttribute( "idWork", newWork.getId() );
 
-        out.print( "</BODY></HTML>" );
+            // Forward to success page
+            dispatcher = request.getRequestDispatcher( "/work-added-success" );
+        }
+        else
+        {
+            // Forward to failure page
+            dispatcher = request.getRequestDispatcher( "/work-added-failure" );
+        }
+
+        dispatcher.forward( request, response );
     }
-
 }

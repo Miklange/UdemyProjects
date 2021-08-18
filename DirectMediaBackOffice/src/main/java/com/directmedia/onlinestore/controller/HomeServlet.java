@@ -27,7 +27,7 @@ public class HomeServlet extends HttpServlet
         String user = request.getSession().getAttribute( "login" ).toString();
 
         out.print( "<HTML><BODY>  Online Store - Gestion de la boutique <br>"
-                + "<br> <div> Bonjour " + user + "</div>"
+                + "<br> <div> Bonjour " + user + "(<a href =\"logout\">Déconnexion</a>)" + "</div>"
                 + "<br> <a href=/DirectMediaBackOffice/catalogue>Accès au catalogue des oeuvres </a>"
                 + "<br> <a href=/DirectMediaBackOffice/add-work-form.html>Ajouter une oeuvre </a>"
                 + " </BODY></HTML>" );
