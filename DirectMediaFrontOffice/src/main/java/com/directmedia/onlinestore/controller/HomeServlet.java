@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HomeServlet
  */
-@WebServlet( name = "HomeServlet", urlPatterns = { "/home" } )
+// Plus besoin de cette servlet avec l'ajout de la page home.jsp
+@Deprecated
+//@WebServlet( name = "HomeServlet", urlPatterns = { "/home" } )
 public class HomeServlet extends HttpServlet
 {
 

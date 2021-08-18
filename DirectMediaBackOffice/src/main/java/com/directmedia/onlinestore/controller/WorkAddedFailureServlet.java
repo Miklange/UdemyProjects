@@ -28,7 +28,7 @@ public class WorkAddedFailureServlet extends HttpServlet
 
         out.print( "Une erreur est survenue, l'oeuvre n'a pas été ajoutée !! <br><br>" );
 
-        out.print( "<a href =\"home\">Page d'acceuil</a><br><br>" );
+        out.print( "<a href =\"home.jsp\">Page d'acceuil</a><br><br>" );
 
         out.print( "</BODY></HTML>" );
     }

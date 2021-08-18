@@ -44,7 +44,7 @@ public class AuthenticationServlet extends HttpServlet
             out.print( "<a href =\"login.html\">Login</a><br><br>" );
         }
 
-        out.print( "<a href =\"home\">Page d'acceuil</a><br><br>" );
+        out.print( "<a href =\"home.jsp\">Page d'acceuil</a><br><br>" );
 
         out.print( "</BODY></HTML>" );
     }

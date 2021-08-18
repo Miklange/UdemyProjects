@@ -27,7 +27,7 @@ public class WorkAddedSuccesServlet extends HttpServlet
 
         out.print( "L'oeuvre avec ID [" + request.getAttribute( "idWork" ) + "] a été ajoutée !! <br><br>" );
 
-        out.print( "<a href =\"home\">Page d'acceuil</a><br><br>" );
+        out.print( "<a href =\"home.jsp\">Page d'acceuil</a><br><br>" );
 
         out.print( "</BODY></HTML>" );
     }
