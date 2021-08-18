@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class HomeServlet
  */
+//Plus besoin de cette servlet avec l'ajout de la page home.jsp
 @Deprecated
 //@WebServlet( name = "HomeServlet", urlPatterns = { "/home" } )
 public class HomeServlet extends HttpServlet

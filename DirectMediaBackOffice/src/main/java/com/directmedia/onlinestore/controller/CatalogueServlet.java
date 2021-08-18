@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,9 @@ import com.directmedia.onlinestore.core.entity.Work;
 /**
  * Servlet implementation class CatalogueServlet
  */
-@WebServlet( name = "CatalogueServlet", urlPatterns = { "/catalogue" } )
+//Plus besoin de cette servlet avec l'ajout de la page home.jsp
+@Deprecated
+//@WebServlet( name = "CatalogueServlet", urlPatterns = { "/catalogue" } )
 public class CatalogueServlet extends HttpServlet
 {
 

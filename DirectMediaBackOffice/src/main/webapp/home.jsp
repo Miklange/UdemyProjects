@@ -21,10 +21,18 @@
     </div>
     <%
     }
+    else
+    {
+    %>
+    <div>
+        <a href=login.html>Connexion</a><br> <br>
+    </div>
+    <%
+    }
     %>
 
     <div>
-        <a href="catalogue">Accès au catalogue des oeuvres </a> <br> <br>
+        <a href="catalogue.jsp">Accès au catalogue des oeuvres </a> <br> <br>
     </div>
 
     <div>
