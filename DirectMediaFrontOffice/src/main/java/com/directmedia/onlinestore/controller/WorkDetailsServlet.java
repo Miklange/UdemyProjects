@@ -3,6 +3,7 @@ package com.directmedia.onlinestore.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,8 +27,6 @@ public class WorkDetailsServlet extends HttpServlet
         response.setContentType( "text/html;charset=UTF-8" );
         PrintWriter out = response.getWriter();
 
-        out.print( "<HTML><BODY>" );
-
         // If the catalog is empty, do nothing
         if ( !Catalogue.listOfWork.isEmpty() )
         {
@@ -42,32 +41,26 @@ public class WorkDetailsServlet extends HttpServlet
 
             if ( currentWork != null )
             {
-                // Print details
-                out.print( "<b>Titre : </b>" + currentWork.getTitle() + "<br>" );
-                out.print( "<b>Artiste : </b>" + currentWork.getMainArtist().getName() + "<br>" );
-                out.print( "<b>Date : </b>" + currentWork.getRelease() + "<br>" );
-                out.print( "<b>Genre : </b>" + currentWork.getGenre() + "<br>" );
-                out.print( "<b>Description : </b>" + currentWork.getSummary() + "<br>" );
+                request.setAttribute( "currentWork", currentWork );
 
-                out.print( "<form action=\"addToCart\" method=\"POST\">" );
-                out.print( "<input type=\"hidden\" name=\"idWork\" value=\"" + currentWork.getId() + "\">" );
-                out.print( "<input type=\"submit\" value=\"Ajouter au caddy\">" );
-                out.print( "</form>" );
+                // Forward to success page
+                RequestDispatcher dispatcher = request.getRequestDispatcher( "/work-details.jsp" );
+                dispatcher.forward( request, response );
             }
             else
             {
                 // No elements for the Id
+                out.print( "<HTML><BODY>" );
                 out.print( "<H1>Aucun élément ne correspond à cet ID</H1>" );
+                out.print( "</BODY></HTML>" );
             }
         }
         else
         {
+            out.print( "<HTML><BODY>" );
             // Catalogue is empty
             out.print( "<H1>Le catalogue est vide</H1>" );
+            out.print( "</BODY></HTML>" );
         }
-
-        out.print( "</BODY></HTML>" );
-
     }
-
 }
