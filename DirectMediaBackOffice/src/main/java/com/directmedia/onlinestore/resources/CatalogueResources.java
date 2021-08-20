@@ -1,30 +1,23 @@
-package com.directmedia.onlinestore.controller;
+package com.directmedia.onlinestore.resources;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Set;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.directmedia.onlinestore.core.entity.Artist;
 import com.directmedia.onlinestore.core.entity.Catalogue;
 import com.directmedia.onlinestore.core.entity.Work;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Servlet implementation class CatalogueServlet
- */
-@WebServlet( name = "CatalogueServlet", urlPatterns = { "/catalogue" } )
-public class CatalogueServlet extends HttpServlet
+@Path( "/catalogue" )
+public class CatalogueResources
 {
-
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
+    @Path( "/liste" )
+    @GET
+    @Produces( MediaType.APPLICATION_JSON )
+    public Set<Work> liste()
     {
         // Add only if empty at beginning
         if ( Catalogue.listOfWork.isEmpty() )
@@ -56,12 +49,6 @@ public class CatalogueServlet extends HttpServlet
             Catalogue.listOfWork.add( oeuvreC );
         }
 
-        // Use Jackson to convert our object to JSON object
-        ObjectMapper objectMapper = new ObjectMapper();
-        response.setContentType( "application/json" );
-
-        PrintWriter out = response.getWriter();
-        objectMapper.writeValue( out, Catalogue.listOfWork );
-
+        return Catalogue.listOfWork;
     }
 }

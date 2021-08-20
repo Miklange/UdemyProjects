@@ -9,5 +9,13 @@
 	<welcome-file-list>
 		<welcome-file>home.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<servlet>
+		<servlet-name>javax.ws.rs.core.application</servlet-name> <!-- Définition d'un controller frontal -->
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>javax.ws.rs.core.application</servlet-name>
+		<url-pattern>/rest/*</url-pattern> <!-- Racine des urls pour attraper les requetes clients, nom défini comme on le souhaite -->
+	</servlet-mapping>
 
 </web-app>
