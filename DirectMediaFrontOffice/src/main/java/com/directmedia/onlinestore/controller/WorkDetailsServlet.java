@@ -43,7 +43,7 @@ public class WorkDetailsServlet extends HttpServlet
             {
                 request.setAttribute( "currentWork", currentWork );
 
-                // Forward to success page
+                // Forward to JSP details page
                 RequestDispatcher dispatcher = request.getRequestDispatcher( "/WEB-INF/work-details.jsp" );
                 dispatcher.forward( request, response );
             }

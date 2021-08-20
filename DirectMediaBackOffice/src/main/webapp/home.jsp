@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/application.js"></script>
 <title>OnlineStore - Accueil du Back Office</title>
 </head>
 <body>
@@ -17,12 +19,13 @@
     <div>
         <!-- <a href=login.html>Connexion</a><br> <br> -->
     </div>
-    <div>
-        <a href="catalogue">Accès au catalogue des oeuvres </a> <br> <br>
-    </div>
 
     <div>
         <a href="add-work-form.html">Ajouter une oeuvre </a> <br> <br>
+    </div>
+    
+    <div>
+        <a href="catalogue">Afficher le catalogue des oeuvres </a> <br> <br>
     </div>
 
 </body>
