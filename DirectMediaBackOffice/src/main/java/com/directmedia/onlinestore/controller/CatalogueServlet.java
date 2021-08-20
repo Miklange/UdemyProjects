@@ -1,8 +1,8 @@
 package com.directmedia.onlinestore.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.directmedia.onlinestore.core.entity.Artist;
 import com.directmedia.onlinestore.core.entity.Catalogue;
 import com.directmedia.onlinestore.core.entity.Work;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Servlet implementation class CatalogueServlet
@@ -55,12 +56,12 @@ public class CatalogueServlet extends HttpServlet
             Catalogue.listOfWork.add( oeuvreC );
         }
 
-        // Add the list in the list of attributes to get it in JSP file
-        request.setAttribute( "listOfWorks", Catalogue.listOfWork );
+        // Use Jackson to convert our object to JSON object
+        ObjectMapper objectMapper = new ObjectMapper();
+        response.setContentType( "application/json" );
 
-        // Go to the JSP page
-        RequestDispatcher dispatcher = request.getRequestDispatcher( "/WEB-INF/catalogue.jsp" );
-        dispatcher.forward( request, response );
+        PrintWriter out = response.getWriter();
+        objectMapper.writeValue( out, Catalogue.listOfWork );
 
     }
 }

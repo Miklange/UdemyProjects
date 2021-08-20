@@ -23,10 +23,9 @@
     <div>
         <a href="add-work-form.html">Ajouter une oeuvre </a> <br> <br>
     </div>
-    
-    <div>
-        <a href="catalogue">Afficher le catalogue des oeuvres </a> <br> <br>
-    </div>
+
+    <a href="catalogue">Afficher le catalogue des oeuvres </a>
+    <br>
 
 </body>
 </html>
