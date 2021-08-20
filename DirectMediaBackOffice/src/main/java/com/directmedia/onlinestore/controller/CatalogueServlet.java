@@ -1,9 +1,10 @@
 package com.directmedia.onlinestore.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,9 +16,7 @@ import com.directmedia.onlinestore.core.entity.Work;
 /**
  * Servlet implementation class CatalogueServlet
  */
-//Plus besoin de cette servlet avec l'ajout de la page home.jsp
-@Deprecated
-//@WebServlet( name = "CatalogueServlet", urlPatterns = { "/catalogue" } )
+@WebServlet( name = "CatalogueServlet", urlPatterns = { "/catalogue" } )
 public class CatalogueServlet extends HttpServlet
 {
 
@@ -26,8 +25,6 @@ public class CatalogueServlet extends HttpServlet
      */
     protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
     {
-        PrintWriter out = response.getWriter();
-
         // Add only if empty at beginning
         if ( Catalogue.listOfWork.isEmpty() )
         {
@@ -58,14 +55,12 @@ public class CatalogueServlet extends HttpServlet
             Catalogue.listOfWork.add( oeuvreC );
         }
 
-        out.print( "<HTML><BODY> Liste des oeuvres : <br> <ul>" );
+        // Add the list in the list of attributes to get it in JSP file
+        request.setAttribute( "listOfWorks", Catalogue.listOfWork );
 
-        // Afficher la liste
-        for ( Work work : Catalogue.listOfWork )
-        {
-            out.print( "<li>" + work.toString() + "</li>" );
-        }
+        // Go to the JSP page
+        RequestDispatcher dispatcher = request.getRequestDispatcher( "/WEB-INF/catalogue.jsp" );
+        dispatcher.forward( request, response );
 
-        out.print( "</ul></BODY></HTML>" );
     }
 }
