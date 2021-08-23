@@ -2,19 +2,22 @@ package com.directmedia.onlinestore.resources;
 
 import java.util.Set;
 
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.directmedia.onlinestore.core.entity.Artist;
 import com.directmedia.onlinestore.core.entity.Catalogue;
 import com.directmedia.onlinestore.core.entity.Work;
 
-@Path( "/catalogue" )
-public class CatalogueResources
+@Path( "/work" )
+public class WorkResources
 {
-    @Path( "/liste" )
     @GET
     @Produces( MediaType.APPLICATION_JSON )
     public Set<Work> liste()
@@ -51,4 +54,42 @@ public class CatalogueResources
 
         return Catalogue.listOfWork;
     }
+
+    @POST
+    public Response add(
+                         @FormParam( "title" ) String title,
+                         @FormParam( "release" ) int release,
+                         @FormParam( "artist" ) String artist,
+                         @FormParam( "genre" ) String genre,
+                         @FormParam( "summary" ) String summary )
+    {
+
+        boolean ok = true;
+        Status returnStatus = Response.Status.CREATED;
+
+        Work nouvelleOeuvre = new Work( title );
+
+        try
+        {
+            nouvelleOeuvre.setRelease( release );
+        }
+        catch ( NumberFormatException nfe )
+        {
+            ok = false;
+            returnStatus = Response.Status.FORBIDDEN;
+        }
+
+        // Not fill other if error
+        if ( ok )
+        {
+            nouvelleOeuvre.setMainArtist( new Artist( artist ) );
+            nouvelleOeuvre.setGenre( genre );
+            nouvelleOeuvre.setSummary( summary );
+
+            Catalogue.listOfWork.add( nouvelleOeuvre );
+        }
+
+        return Response.status( returnStatus ).build();
+    }
+
 }

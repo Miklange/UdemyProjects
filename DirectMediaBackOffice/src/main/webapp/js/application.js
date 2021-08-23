@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $('a[href=catalogue]').on('click', function (event) {
         event.preventDefault();
-
         if ($('body').children().length<6) {
             $.ajax({
-                url: "rest/catalogue/liste",
+                url: "rest/work",
+                
                 success: function (result) {
                     var catalog='';
                     result.forEach(function(nextWork){
@@ -17,3 +17,4 @@ $(document).ready(function () {
         }
     });
 });
+
