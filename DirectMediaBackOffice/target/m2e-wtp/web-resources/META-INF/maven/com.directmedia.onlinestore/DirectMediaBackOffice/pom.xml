@@ -12,7 +12,7 @@
 	<!-- ===== Informations Maven ===== -->
 	<groupId>com.directmedia.onlinestore</groupId>
 	<artifactId>DirectMediaBackOffice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>war</packaging>
 
 	<!-- ===== Informations générales ===== -->
@@ -34,12 +34,10 @@
 	<!-- =============================================================== -->
 	<dependencies>
 
-		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>8.0</version>
 		</dependency>
 
 		<dependency>

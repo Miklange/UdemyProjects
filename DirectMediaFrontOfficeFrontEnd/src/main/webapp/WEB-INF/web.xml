@@ -3,19 +3,11 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-
-	<display-name>DirectMedia Back Office</display-name>
-
+	
+	<display-name>DirectMedia Front Office Front End</display-name>
+	
 	<welcome-file-list>
 		<welcome-file>home.jsp</welcome-file>
 	</welcome-file-list>
-
-	<servlet>
-		<servlet-name>javax.ws.rs.core.Application</servlet-name>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>javax.ws.rs.core.Application</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
-	</servlet-mapping>
-
+	
 </web-app>
